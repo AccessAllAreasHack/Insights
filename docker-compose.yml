@@ -14,7 +14,7 @@ services:
     networks:
       - localdev
     volumes:
-      - ./build/libs/teamapi-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/api.war
+      - ./build/libs/insights-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/api.war
 
 networks:
   localdev:
