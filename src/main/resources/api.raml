@@ -1,0 +1,121 @@
+#%RAML 0.8
+title: Insights
+version: v1
+baseUri: /
+mediaType: application/json
+schemas:
+  - Insights: |
+      {
+        "$schema": "http://json-schema.org/draft-03/schema",
+        "type": "array",
+        "items": {
+            "id": {
+                "type": "string"
+            },
+            "name": {
+                "type": "string"
+            },
+            "image": {
+                "type": "string"
+            },
+            "details": {
+                "type": "string"
+            }
+        }
+      }
+  - Location: |
+      {
+        "$schema": "http://json-schema.org/draft-03/schema",
+        "properties": {
+            "center": {
+                "type": "object",
+                "properties": {
+                    "lat": {
+                        "type": "string"
+                    },
+                    "lng": {
+                        "type": "string"
+                    }
+                }
+            },
+            "results": {
+                "items": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "type": "string"
+                            },
+                            "lng": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "details": {
+                        "type": "string"
+                    }
+                },
+                "type": "array"
+            }
+        },
+        "type": "object"
+      }
+/insights:
+  description: Get a list of insights
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Insights
+            example: |
+              [
+                {
+                  "id": "id1",
+                  "name": "display name 1",
+                  "image": "image1.png",
+                  "details": "lorem ipsum dolor sit amet"
+                },
+                {
+                  "id": "id2",
+                  "name": "display name 2",
+                  "image": "image2.png",
+                  "details": "lorem ipsum dolor sit amet"
+                }
+              ]
+
+/locations/{id}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Location
+            example: |
+              {
+                "center": {
+                  "lat": "-2.34567",
+                  "lng": "1.5678"
+                },
+                "results": [
+                  {
+                    "id": "1",
+                    "location": {
+                      "lat": "-2.34567",
+                      "lng": "1.5678"
+                    },
+                    "details": "spend=45.67,sex=m"
+                  },
+                  {
+                    "id": "2",
+                    "location": {
+                      "lat": "2.34567",
+                      "lng": "-1.5678"
+                    },
+                    "details": "spend=45.67,sex=m"
+                  }
+                ]
+              }

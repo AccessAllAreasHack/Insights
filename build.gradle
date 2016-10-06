@@ -1,41 +1,47 @@
-plugins {
-    id "org.sonarqube" version "2.0.1"
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.akhikhl.gretty:gretty:1.4.0"
+    }
 }
 
-group 'com.hacka.thon'
-version 'SNAPSHOT-0.1'
-
-apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: "org.sonarqube"
-apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: "org.akhikhl.gretty"
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+version "0.0.1-SNAPSHOT"
+
+jar {
+    baseName = 'insights'
+}
+
+war {
+    baseName = 'insights'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-
-    // mandatory dependencies for using Spock
-    compile "org.codehaus.groovy:groovy-all:2.4.1"
-    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
-
-    // mongodb driver
-    compile 'org.mongodb:mongodb-driver:3.2.2'
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-}
-
 gretty {
-	port = 8081
-	contextPath = '/hackathon'
-	servletContainer = 'tomcat8'
+    port = 8081
+    contextPath = '/hackathon'
+    servletContainer = 'tomcat8'
 }
 
-tasks.withType(org.gradle.api.tasks.testing.Test) {
-    systemProperty 'MONGO_PORT_27017_TCP_ADDR', 'localhost'
-    systemProperty 'MONGO_PORT_27017_TCP_PORT', '27017'
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 }
-
