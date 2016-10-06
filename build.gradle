@@ -3,12 +3,13 @@ buildscript {
         springBootVersion = '1.4.1.RELEASE'
     }
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath "org.akhikhl.gretty:gretty:1.4.0"
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.1"
     }
 }
 
