@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+Hello World
 <a href="./databaselistinfoservlet">List Mongo Databases</a>
 </body>
 </html>
