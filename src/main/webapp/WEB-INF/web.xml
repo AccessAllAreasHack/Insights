@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app>
+    <!-- General description of your web application -->
+    <display-name>javaweapp - Webapp</display-name>
+    <description>
+        Describe the javaweapp Webapp here.
+        stefletcher@example.com
+
+        See http://tomcat.apache.org/tomcat-6.0-doc/appdev/web.xml.txt for more information
+        regarding this Web Descriptor File.
+    </description>
+</web-app>

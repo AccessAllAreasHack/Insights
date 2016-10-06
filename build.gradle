@@ -1,0 +1,41 @@
+plugins {
+    id "org.sonarqube" version "2.0.1"
+}
+
+group 'com.hacka.thon'
+version 'SNAPSHOT-0.1'
+
+apply plugin: 'groovy'
+apply plugin: 'war'
+apply plugin: "org.sonarqube"
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // mandatory dependencies for using Spock
+    compile "org.codehaus.groovy:groovy-all:2.4.1"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+
+    // mongodb driver
+    compile 'org.mongodb:mongodb-driver:3.2.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+gretty {
+	port = 8081
+	contextPath = '/hackathon'
+	servletContainer = 'tomcat8'
+}
+
+tasks.withType(org.gradle.api.tasks.testing.Test) {
+    systemProperty 'MONGO_PORT_27017_TCP_ADDR', 'localhost'
+    systemProperty 'MONGO_PORT_27017_TCP_PORT', '27017'
+}
+
