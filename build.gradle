@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath "org.akhikhl.gretty:gretty:1.4.0"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.1"
     }
 }
 
@@ -16,6 +17,7 @@ apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 apply plugin: "org.akhikhl.gretty"
+apply plugin: "org.sonarqube"
 
 version "0.0.1-SNAPSHOT"
 
