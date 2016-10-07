@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class InsightsResource {
+public class InsightsController {
 
     @ResponseBody
     @RequestMapping(value = "/insights", method = RequestMethod.GET)

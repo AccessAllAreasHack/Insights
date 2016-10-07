@@ -2,7 +2,9 @@ package com.barclays.insight.acquisition.web;
 
 import com.barclays.insight.acquisition.data.GeoLocation;
 import com.barclays.insight.acquisition.data.Location;
+import com.barclays.insight.acquisition.data.LocationsDataExtractor;
 import com.barclays.insight.acquisition.data.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,7 +13,10 @@ import java.util.Random;
 
 
 @RestController
-public class LocationsResource {
+public class LocationsController {
+
+    @Autowired
+    private LocationsDataExtractor locationsDataExtractor;
 
     @ResponseBody
     @RequestMapping(value = "/locations", method = RequestMethod.GET)

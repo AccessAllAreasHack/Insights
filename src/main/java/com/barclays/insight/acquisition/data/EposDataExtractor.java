@@ -6,11 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.util.JSON;
 import org.bson.Document;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,12 +20,6 @@ public class EposDataExtractor {
 
     private final String mongoHost = System.getProperty("spring.data.mongodb.host", "ec2-52-212-3-182.eu-west-1.compute.amazonaws.com");
     private final int mongoPort = Integer.parseInt(System.getProperty("spring.data.mongodb.port", "27017"));
-
-//    public static void main(String[] args) {
-//
-//        new EposDataExtractor().extract();
-//
-//    }
 
     public void extract() {
 
