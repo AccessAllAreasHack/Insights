@@ -1,10 +1,10 @@
 package com.barclays.insight.acquisition.web;
 
-import com.barclays.insight.acquisition.data.GeoLocation;
 import com.barclays.insight.acquisition.data.Insight;
-import com.barclays.insight.acquisition.data.Location;
-import com.barclays.insight.acquisition.data.Result;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +16,32 @@ public class InsightsResource {
     @RequestMapping(value = "/insights", method = RequestMethod.GET)
     public List<Insight> listInsights() {
         final List<Insight> insights = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= 11; i++) {
             insights.add(getInsight(i));
         }
         return insights;
     }
 
     private Insight getInsight(final int id) {
+        String name;
+        switch (id) {
+            case 1:
+                name = "mamils";
+                break;
+            case 2:
+                name = "lunching ladies";
+                break;
+            case 3:
+                name = "close competitors";
+                break;
+            default:
+                name = "insight " + id;
+        }
         final Insight insight = new Insight();
-        insight.setId("id" + id);
-        insight.setImage("/path/to/image" + id + ".png");
-        insight.setName("product" + id);
-        insight.setDetails("lorem ipsum dolor sit amet");
+        insight.setId(String.valueOf(id));
+        insight.setImage("img/macbook.jpg");
+        insight.setName(name);
+        insight.setDetails("content " + id);
         return insight;
     }
 }
