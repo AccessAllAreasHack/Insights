@@ -12,35 +12,35 @@ public class InsightMemoryDao implements InsightDao {
         switch (id) {
             case 1:
                 name = "Bruces";
-                image = "male.png";
+                image = "male";
                 break;
             case 2:
                 name = "Sheilas";
-                image = "female.png";
+                image = "female";
                 break;
             case 3:
                 name = "Top Drop";
-                image = "wine.png";
+                image = "wine";
                 break;
             case 4:
                 name = "Single Bruces";
-                image = "wine-male.png";
+                image = "wine-male";
                 break;
             case 5:
                 name = "Single Sheilas";
-                image = "wine-female.png";
+                image = "wine-female";
                 break;
             case 6:
                 name = "Fancy a Tipple";
-                image = "wine.png";
+                image = "wine";
                 break;
             case 7:
                 name = "Clean Freaks";
-                image = "clean.png";
+                image = "clean";
                 break;
             default:
                 name = "insight " + id;
-                image = "demo.png";
+                image = "demo";
         }
         final Insight insight = new Insight();
         insight.setId(String.valueOf(id));
