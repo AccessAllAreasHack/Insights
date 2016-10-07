@@ -1,5 +1,6 @@
 package com.barclays.insight.acquisition.web;
 
+import com.barclays.insight.acquisition.dao.InsightDao;
 import com.barclays.insight.acquisition.data.GeoLocation;
 import com.barclays.insight.acquisition.data.Location;
 import com.barclays.insight.acquisition.data.LocationsDataExtractor;
@@ -7,8 +8,6 @@ import com.barclays.insight.acquisition.data.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 
@@ -16,42 +15,21 @@ import java.util.Random;
 public class LocationsController {
 
     @Autowired
+    private InsightDao insightDao;
+
+    @Autowired
     private LocationsDataExtractor locationsDataExtractor;
 
     @ResponseBody
     @RequestMapping(value = "/locations", method = RequestMethod.GET)
     public Location getAllLocations() {
-        final GeoLocation center = new GeoLocation();
-        center.setLat("53.4777339");
-        center.setLng("-2.2447379");
-        final List<Result> results = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 1; j <= 10; j++) {
-                results.add(getResult(center, j, String.valueOf(i)));
-            }
-        }
-        final Location locations = new Location();
-        locations.setCenter(center);
-        locations.setResults(results);
-
-        return locations;
+        return locationsDataExtractor.getLocations();
     }
 
     @ResponseBody
     @RequestMapping(value = "/locations/{id}", method = RequestMethod.GET)
     public Location getLocations(@PathVariable("id") final String id) {
-        final GeoLocation center = new GeoLocation();
-        center.setLat("53.527814");
-        center.setLng("-2.4557895");
-        final List<Result> results = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            results.add(getResult(center, i, id));
-        }
-        final Location locations = new Location();
-        locations.setCenter(center);
-        locations.setResults(results);
-
-        return locations;
+        return locationsDataExtractor.getLocations(Integer.parseInt(id));
     }
 
     private Result getResult(final GeoLocation centre, final int id, final String custId) {
