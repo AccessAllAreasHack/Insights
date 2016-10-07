@@ -8,28 +8,35 @@ public class InsightMemoryDao implements InsightDao {
 
     public Insight getInsight(final int id) {
         String name;
+        String image;
         switch (id) {
             case 1:
-                name = "gender=male";
+                name = "Bruces";
+                image = "male.png";
                 break;
             case 2:
-                name = "gender=female";
+                name = "Sheilas";
+                image = "female.png";
                 break;
             case 3:
-                name = "product=merlot";
+                name = "Top Drop";
+                image = "wine.png";
                 break;
             case 4:
-                name = "product=merlot, gender=male";
+                name = "Single Bruces";
+                image = "wine-male.png";
                 break;
             case 5:
-                name = "product=merlot, gender=female";
+                name = "Single Sheilas";
+                image = "wine-female.png";
                 break;
             default:
                 name = "insight " + id;
+                image = "demo.png";
         }
         final Insight insight = new Insight();
         insight.setId(String.valueOf(id));
-        insight.setImage("img/macbook.jpg");
+        insight.setImage(image);
         insight.setName(name);
         insight.setDetails("content " + id);
         return insight;
