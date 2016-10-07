@@ -32,7 +32,7 @@ public class InsightMemoryDao implements InsightDao {
                 break;
             case 6:
                 name = "Fancy a Tipple";
-                image = "wine";
+                image = "booze";
                 break;
             case 7:
                 name = "Clean Freaks";
