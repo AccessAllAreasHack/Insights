@@ -16,7 +16,13 @@ public class InsightMemoryDao implements InsightDao {
                 name = "gender=female";
                 break;
             case 3:
-                name = "close competitors";
+                name = "product=merlot";
+                break;
+            case 4:
+                name = "product=merlot, gender=male";
+                break;
+            case 5:
+                name = "product=merlot, gender=female";
                 break;
             default:
                 name = "insight " + id;
