@@ -44,8 +44,10 @@ public class LocationsDataExtractor {
             final MongoDatabase database = mongo.getDatabase("insights");
             final List<Result> results = new ArrayList<>();
             final MongoCollection<Document> collection = database.getCollection("customerTransactions");
-            FindIterable<Document> iterable = collection.find(filter);
-            if (filter == null) {
+            FindIterable<Document> iterable;
+            if (filter != null) {
+                iterable = collection.find(filter);
+            } else {
                 iterable = collection.find();
             }
             for (Document doc : iterable) {
