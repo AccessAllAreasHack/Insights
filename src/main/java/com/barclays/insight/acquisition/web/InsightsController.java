@@ -21,7 +21,7 @@ public class InsightsController {
     @RequestMapping(value = "/insights", method = RequestMethod.GET)
     public List<Insight> listInsights() {
         final List<Insight> insights = new ArrayList<>();
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 7; i++) {
             insights.add(insightDao.getInsight(i));
         }
         return insights;

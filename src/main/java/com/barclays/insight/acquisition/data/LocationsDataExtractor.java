@@ -13,8 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.*;
 
 @Service
 public class LocationsDataExtractor {
@@ -39,6 +38,12 @@ public class LocationsDataExtractor {
                 break;
             case 5:
                 query = and(eq("prodDesc", "Merlot Large"), eq("CustSex", "F"));
+                break;
+            case 6:
+                query = or(eq("prodDesc", "carlsberg"), eq("prodDesc", "Merlot Large"));
+                break;
+            case 7:
+                query = or(eq("prodDesc", "Toothpaste"), eq("prodDesc", "Shampoo"));
                 break;
         }
 

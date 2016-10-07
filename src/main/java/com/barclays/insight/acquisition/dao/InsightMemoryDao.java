@@ -30,6 +30,14 @@ public class InsightMemoryDao implements InsightDao {
                 name = "Single Sheilas";
                 image = "wine-female.png";
                 break;
+            case 6:
+                name = "Fancy a Tipple";
+                image = "wine.png";
+                break;
+            case 7:
+                name = "Clean Freaks";
+                image = "clean.png";
+                break;
             default:
                 name = "insight " + id;
                 image = "demo.png";
