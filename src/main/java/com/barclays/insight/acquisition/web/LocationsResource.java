@@ -6,7 +6,6 @@ import com.barclays.insight.acquisition.data.Result;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -36,8 +35,8 @@ public class LocationsResource {
     @RequestMapping(value = "/locations/{id}", method = RequestMethod.GET)
     public Location getLocations(@PathVariable("id") final String id) {
         final GeoLocation center = new GeoLocation();
-        center.setLat("53.4777339");
-        center.setLng("-2.2447379");
+        center.setLat("53.527814");
+        center.setLng("-2.4557895");
         final List<Result> results = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             results.add(getResult(i, id));
@@ -50,10 +49,11 @@ public class LocationsResource {
     }
 
     private Result getResult(final int id, final String custId) {
+
         final Result result = new Result();
         final GeoLocation location = new GeoLocation();
-        location.setLat("53.47773" + (39 - id));
-        location.setLng("-2.24473" + (79 - id));
+        location.setLat("53.47773" + (39 - id) * 12);
+        location.setLng("-2.24473" + (79 - id) * 11);
         result.setCustid(custId);
         result.setLocation(location);
         result.setDetails("item=sandwich ,qty=" + id + ", totalspend=15.75 ,sex=f, age=45");
